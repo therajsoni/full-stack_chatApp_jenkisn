@@ -21,17 +21,17 @@ jobs:
       - name: Code Checkout
         uses: actions/checkout@v3
 
-      # 3. SonarQube Scan
-      - name: SonarQube Scan
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: |
-          docker run \
-            -e SONAR_HOST_URL="http://your-sonar-server" \
-            -e SONAR_TOKEN=$SONAR_TOKEN \
-            sonarsource/sonar-scanner-cli \
-            -Dsonar.projectKey=chat-app \
-            -Dsonar.projectName=chat-app
+      # # 3. SonarQube Scan
+      # - name: SonarQube Scan
+      #   env:
+      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      #   run: |
+      #     docker run \
+      #       -e SONAR_HOST_URL="http://your-sonar-server" \
+      #       -e SONAR_TOKEN=$SONAR_TOKEN \
+      #       sonarsource/sonar-scanner-cli \
+      #       -Dsonar.projectKey=chat-app \
+      #       -Dsonar.projectName=chat-app
 
       # 4. Docker Compose Deploy
       - name: Deploy with Docker Compose
