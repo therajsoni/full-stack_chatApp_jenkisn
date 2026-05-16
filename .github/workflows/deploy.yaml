@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - masin
+  workflow_dispatch:    
 
 jobs:
 
