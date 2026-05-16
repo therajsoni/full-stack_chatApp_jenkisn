@@ -1,0 +1,39 @@
+name: CI-CD Pipeline
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      # 1. Clean workspace (default fresh runner hota hai)
+      - name: Clean Workspace
+        run: echo "Fresh runner - no need cleanWs"
+
+      # 2. Checkout code
+      - name: Code Checkout
+        uses: actions/checkout@v3
+
+      # 3. SonarQube Scan
+      # - name: SonarQube Scan
+      #   env:
+      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      #   run: |
+      #     docker run \
+      #       -e SONAR_HOST_URL="http://your-sonar-server" \
+      #       -e SONAR_TOKEN=$SONAR_TOKEN \
+      #       sonarsource/sonar-scanner-cli \
+      #       -Dsonar.projectKey=chat-app \
+      #       -Dsonar.projectName=chat-app
+
+      # 4. Docker Compose Deploy
+      - name: Deploy with Docker Compose
+        run: |
+          docker compose up -d --build
