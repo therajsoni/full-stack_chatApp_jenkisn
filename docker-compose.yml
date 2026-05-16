@@ -13,7 +13,8 @@ services:
       - fullstack-chatapp
 
   backend:
-    context: ./backend
+    build: 
+       context: ./backend
     container_name: full-stack_backend
     environment:
       - NODE_ENV=production
@@ -26,7 +27,8 @@ services:
       - fullstack-chatapp
 
   frontend:
-    context: ./frontend
+    build: 
+       context: ./frontend
     container_name: full-stack_frontend
     ports:
       - "80:80"
